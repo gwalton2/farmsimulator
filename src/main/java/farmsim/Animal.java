@@ -7,7 +7,7 @@ public class Animal {
     int productPrice;
 
     public Animal(int price, String product, int productPrice) {
-        level = 0;
+        level = 1;
         this.price = price;
         this.product = product;
         this.productPrice = productPrice;

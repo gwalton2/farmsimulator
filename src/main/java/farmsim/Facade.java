@@ -42,6 +42,7 @@ public class Facade {
             }
             passiveIncome += animalIncome;
         }
+        farm.updateMoney(passiveIncome - passiveCost);
         System.out.println("For this cycle, your farm cost you $" + passiveCost + " and made you $" + passiveIncome);
     }
 
@@ -54,12 +55,16 @@ public class Facade {
             animal = new Sheep();
         }
         int price = animal.getPrice();
-        if (farm.getMoney() <= price) {
-            farm.addAnimal(animal);
-            farm.updateMoney(price * -1);
+        if (farm.getMoney() >= price) {
+            if (farm.addAnimal(animal)) {
+                farm.updateMoney(price * -1);
 
-            System.out.println(type + " purchased for " + price);
-            return true;
+                System.out.println(type + " purchased for $" + price);
+                return true;
+            }
+            else {
+                return false;
+            }
         }
         else {
             System.out.println("You do not have enough money to purchase this animal. It costs $" + price);
@@ -73,7 +78,7 @@ public class Facade {
         farm.updateMoney(price);
         farm.removeAnimal(index);
 
-        System.out.println("You have sold this animal for " + price);
+        System.out.println("You have sold this animal for $" + price);
     }
 
     public void hireFarmer(String type) {
@@ -90,10 +95,10 @@ public class Facade {
 
     public boolean levelUpFarm() {
         int price = farm.getLevel() * 100;
-        if (farm.getMoney() <= price) {
+        if (farm.getMoney() >= price) {
             farm.levelUp();
             farm.updateMoney(price * -1);
-            System.out.println("Leveled up your farm for " + price);
+            System.out.println("Leveled up your farm for $" + price);
             return true;
         }
         else {
@@ -106,10 +111,10 @@ public class Facade {
     public boolean levelUpFarmer(int index) {
         Farmer farmer = farm.getFarmers().get(index);
         int price = farmer.getLevel() * 50;
-        if (farm.getMoney() <= price) {
+        if (farm.getMoney() >= price) {
             farmer.levelUp();
             farm.updateMoney(price * -1);
-            System.out.println("Leveled up this farmer for " + price);
+            System.out.println("Leveled up this farmer for $" + price);
             return true;
         }
         else {
@@ -119,13 +124,41 @@ public class Facade {
         }
     }
 
+    public boolean upgradeFarmer(int index){
+        Farmer farmer = farm.getFarmers().get(index);
+        if (farmer.getLevel() < 5) {
+            System.out.println("A farmer must be at least a level 5 to upgrade");
+            System.out.println("Try again");
+            return false;
+        }
+        int price = farmer.getLevel() * 100;
+        if (farm.getMoney() >= price) {
+            Farmer upgradedFarmer;
+            if (farmer instanceof CropGrower) {
+                upgradedFarmer = new CornChild(farmer);
+            }
+            else {
+                upgradedFarmer = new CritterWhisperer(farmer);
+            }
+            farm.removeFarmer(index);
+            farm.addFarmer(upgradedFarmer);
+            System.out.println("Upgraded farmer for $" + price);
+            return true;
+        }
+        else {
+            System.out.println("You do not have enough money to upgrade this farmer. It costs $" + price);
+            System.out.println("Try again");
+            return false;
+        }
+    }
+
     public boolean levelUpAnimal(int index) {
         Animal animal = farm.getAnimals().get(index);
         int price = animal.getLevel() * 50;
-        if (farm.getMoney() <= price) {
+        if (farm.getMoney() >= price) {
             animal.levelUp();
             farm.updateMoney(price * -1);
-            System.out.println("Leveled up this animal for " + price);
+            System.out.println("Leveled up this animal for $" + price);
             return true;
         }
         else {

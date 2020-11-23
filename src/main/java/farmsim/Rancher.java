@@ -18,6 +18,10 @@ public class Rancher extends Farmer {
         return level;
     }
 
+    public int getSalary() {
+        return salary + farmer.getSalary();
+    }
+
     public double getAnimalMult() {
         return animalMult + farmer.getAnimalMult();
     }

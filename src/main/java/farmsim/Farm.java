@@ -12,7 +12,7 @@ public class Farm {
 
     public Farm(int pastures, int acres) {
         money = 100;
-        level = 0;
+        level = 1;
         this.pastures = pastures;
         this.acres = acres;
         farmers = new ArrayList<Farmer>();
@@ -33,20 +33,26 @@ public class Farm {
         return money;
     }
 
-    public void addFarmer(Farmer farmer) {
-        farmers.add(farmer);
-    }
-
     public void updateMoney(int update) {
         money += update;
     }
 
-    public void addAnimal(Animal animal) {
+    public void addFarmer(Farmer farmer) {
+        farmers.add(farmer);
+    }
+
+    public void removeFarmer(int index) {
+        farmers.remove(index);
+    }
+
+    public boolean addAnimal(Animal animal) {
         if (animals.size() < pastures) {
             animals.add(animal);
+            return true;
         }
         else {
             System.out.println("Not enough pastures for another animal. Level up your farm!");
+            return false;
         }
     }
 

@@ -7,7 +7,7 @@ public class Farmer {
     double cropMult;
 
     public Farmer(double animalMult, double cropMult) {
-        level = 0;
+        level = 1;
         salary = 50;
         this.animalMult = animalMult;
         this.cropMult = cropMult;
