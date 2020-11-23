@@ -2,20 +2,30 @@ package farmsim;
 
 public class Animal {
     int level;
+    int price;
     String product;
-    double productPrice;
-    boolean productReady;
+    int productPrice;
 
-    public Animal(String product, double productPrice) {
+    public Animal(int price, String product, int productPrice) {
         level = 0;
+        this.price = price;
         this.product = product;
         this.productPrice = productPrice;
-        productReady = true;
     }
 
     public void levelUp() {
-        level++;
-        productPrice += 50;
+        if (level < 10) {
+            level++;
+            productPrice += 10;
+            price += 50;
+        }
+        else {
+            System.out.println("You have already maxed this animal.");
+        }
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     public int getLevel() {
@@ -26,11 +36,7 @@ public class Animal {
         return product;
     }
 
-    public double getProductPrice() {
+    public int getProductPrice() {
         return productPrice;
-    }
-
-    public boolean getProductReady() {
-        return productReady;
     }
 }

@@ -25,8 +25,20 @@ public class Farm {
         acres++;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
     public void addFarmer(Farmer farmer) {
         farmers.add(farmer);
+    }
+
+    public void updateMoney(int update) {
+        money += update;
     }
 
     public void addAnimal(Animal animal) {
@@ -36,6 +48,13 @@ public class Farm {
         else {
             System.out.println("Not enough pastures for another animal. Level up your farm!");
         }
+    }
+
+    public Animal removeAnimal(int index) {
+        Animal animal = animals.get(index);
+        animals.remove(index);
+
+        return animal;
     }
 
     public ArrayList<Farmer> getFarmers() {
@@ -48,17 +67,23 @@ public class Farm {
         return animalsCopy;
     }
 
+    public int getAcres() {
+        return acres;
+    }
+
     public String toString() {
         StringBuilder farmStr = new StringBuilder("\n-----Farm-----\n");
         farmStr.append("Level: " + Integer.toString(level) + "    $" + Integer.toString(money) + "\n");
-        farmStr.append("Pastures: ").append(Integer.toString(pastures)).append("    Acres: ").append(Integer.toString(acres)).append("\n");
+        farmStr.append("Pastures: ").append(Integer.toString(pastures)).append("    Acres: ").append(Integer.toString(acres)).append("\n\n");
 
         for (Farmer farmer : farmers) {
-            farmStr.append(farmer.getClass().getName() + "     Level: " + farmer.getLevel() + "\n");
+            farmStr.append(farmer.getClass().getName().split("[.]")[1] + "     Level: " + farmer.getLevel());
+            farmStr.append("    Salary: " + farmer.getSalary() + "    Animal Multiplier: " + farmer.getAnimalMult() + "    Crop Multiplier: " + farmer.getCropMult() + "\n");
         }
-
+        farmStr.append("\n");
         for (Animal animal : animals) {
-            farmStr.append(animal.getClass().getName() + "     Level: " + animal.getLevel() + "\n");
+            farmStr.append(animal.getClass().getName().split("[.]")[1] + "     Level: " + animal.getLevel());
+            farmStr.append("    Price: " + animal.getPrice() + "    Daily income from " + animal.getProduct() + ": " + animal.getProductPrice() + "\n");
         }
         farmStr.append("\n");
         return farmStr.toString();

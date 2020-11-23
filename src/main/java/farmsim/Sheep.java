@@ -3,6 +3,6 @@ package farmsim;
 public class Sheep extends Animal {
 
     public Sheep() {
-        super("Wool", 100);
+        super(300, "Wool", 100);
     }
 }
