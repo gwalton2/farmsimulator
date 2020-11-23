@@ -4,14 +4,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Main {
-    private BufferedReader reader;
-    private Facade farmInterface;
+    private static BufferedReader reader;
+    private static Facade farmInterface;
 
-    public static void main(String[] args) {
-        System.out.println("Hello World");
-    }
-
-    public void startGame() throws Exception {
+    public static void main(String[] args) throws Exception {
         reader = new BufferedReader(new InputStreamReader(System.in));
         farmInterface = new Facade();
 

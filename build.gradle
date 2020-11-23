@@ -9,6 +9,10 @@ apply plugin: 'jacoco'
 
 mainClassName = 'farmsim.Main'
 
+run {
+    standardInput = System.in
+}
+
 
 // In this section you declare where to find the dependencies of your project
 repositories {

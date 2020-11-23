@@ -1,19 +1,25 @@
 package farmsim;
 
 public class Animal {
+    int level;
     String product;
     double productPrice;
-    int level;
+    boolean productReady;
 
     public Animal(String product, double productPrice) {
         level = 0;
         this.product = product;
         this.productPrice = productPrice;
+        productReady = true;
     }
 
     public void levelUp() {
         level++;
         productPrice += 50;
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public String getProduct() {
@@ -22,5 +28,9 @@ public class Animal {
 
     public double getProductPrice() {
         return productPrice;
+    }
+
+    public boolean getProductReady() {
+        return productReady;
     }
 }

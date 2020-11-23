@@ -3,6 +3,7 @@ package farmsim;
 import java.util.ArrayList;
 
 public class Farm {
+    private int money;
     private int level;
     private int pastures;
     private int acres;
@@ -10,6 +11,7 @@ public class Farm {
     private ArrayList<Animal> animals;
 
     public Farm(int pastures, int acres) {
+        money = 100;
         level = 0;
         this.pastures = pastures;
         this.acres = acres;
@@ -28,7 +30,7 @@ public class Farm {
     }
 
     public void addAnimal(Animal animal) {
-        if (animals.size() < acres) {
+        if (animals.size() < pastures) {
             animals.add(animal);
         }
         else {
@@ -44,5 +46,21 @@ public class Farm {
     public ArrayList<Animal> getAnimals() {
         ArrayList<Animal> animalsCopy = new ArrayList<>(animals);
         return animalsCopy;
+    }
+
+    public String toString() {
+        StringBuilder farmStr = new StringBuilder("\n-----Farm-----\n");
+        farmStr.append("Level: " + Integer.toString(level) + "    $" + Integer.toString(money) + "\n");
+        farmStr.append("Pastures: ").append(Integer.toString(pastures)).append("    Acres: ").append(Integer.toString(acres)).append("\n");
+
+        for (Farmer farmer : farmers) {
+            farmStr.append(farmer.getClass().getName() + "     Level: " + farmer.getLevel() + "\n");
+        }
+
+        for (Animal animal : animals) {
+            farmStr.append(animal.getClass().getName() + "     Level: " + animal.getLevel() + "\n");
+        }
+        farmStr.append("\n");
+        return farmStr.toString();
     }
 }

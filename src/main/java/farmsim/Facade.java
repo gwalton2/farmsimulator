@@ -21,6 +21,6 @@ public class Facade {
         }
 
         farm = new FarmDirector().ConstructFarm(builder, farmer);
-        System.out.println("Successfully created your farm!");
+        System.out.println(farm.toString());
     }
 }
