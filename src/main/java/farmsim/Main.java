@@ -2,6 +2,7 @@ package farmsim;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 public class Main {
@@ -15,7 +16,7 @@ public class Main {
      * @param args is not used here
      */
     public static void main(String[] args) throws Exception {
-        reader = new BufferedReader(new InputStreamReader(System.in));
+        reader = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
         farmInterface = new Facade();
 
         System.out.println("----Welcome to FarmSimulator----");
@@ -26,6 +27,9 @@ public class Main {
             System.out.println("You can choose your farm to favor crops or animals.");
             System.out.println("Type in 'crops' or 'animals'");
             farmChoice = reader.readLine();
+            if (farmChoice == null) {
+                throw new Exception();
+            }
         }
 
         String farmerChoice = "";
@@ -34,6 +38,9 @@ public class Main {
                     + "farming crops or raising animals.");
             System.out.println("Type in 'crops' or 'animals'");
             farmerChoice = reader.readLine();
+            if (farmerChoice == null) {
+                throw new Exception();
+            }
         }
 
         farm = farmInterface.createFarm(farmChoice, farmerChoice);
@@ -70,7 +77,12 @@ public class Main {
      */
     public static void runDayTime() throws Exception {
         System.out.println("\nDaytime");
-        String move = reader.readLine().toLowerCase();
+        String move = reader.readLine();
+        if (move == null) {
+            throw new Exception();
+        } else {
+            move = move.toLowerCase();
+        }
         boolean successfulMove = true;
 
         if (move.equals("buy sheep")) {
