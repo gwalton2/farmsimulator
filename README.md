@@ -18,9 +18,9 @@ Each cycle(one day and one night) your farm costs you money(salaries and upkeep)
 The game is over if your farm reaches $0(you lose) or $10,000(you win).
 
 ## Design Patterns
-Decorator - used to upgrade the farmers and increase their affinities for animals or crops
-Builder - used to create the farm object
-Facade - used to provide a simplified interface between the farm system and Main.
+- Decorator: used to upgrade the farmers and increase their affinities for animals or crops
+- Builder: used to create the farm object
+- Facade: used to provide a simplified interface between the farm system and Main.
 
 ## Requirements
 1) A new world must start with at least 1 farm.
