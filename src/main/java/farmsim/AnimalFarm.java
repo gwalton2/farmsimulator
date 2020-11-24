@@ -10,6 +10,10 @@ public class AnimalFarm extends FarmBuilder {
     public void addFarmer(Farmer farmer) {
         farm.addFarmer(farmer);
     }
+
+    /**
+    *This method adds all the animals necessary for an animal oriented farm.
+    */
     public void addAnimals() {
         Cow cow1 = new Cow();
         Cow cow2 = new Cow();

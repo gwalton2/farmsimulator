@@ -11,6 +11,9 @@ public class CropFarm extends FarmBuilder {
         farm.addFarmer(farmer);
     }
 
+    /**
+     *This method adds all the animals necessary for a crop oriented farm.
+     */
     public void addAnimals() {
         Cow cow = new Cow();
         Sheep sheep = new Sheep();

@@ -8,6 +8,10 @@ public class Rancher extends Farmer {
         this.farmer = farmer;
     }
 
+    /**
+     *This method handles leveling up the rancher.
+     * @return boolean indicating success or failure
+     */
     public boolean levelUp() {
         if (level < 10) {
             level++;
@@ -15,8 +19,7 @@ public class Rancher extends Farmer {
             animalMult = (double) Math.round(animalMult * 10 + 2) / 10;
             cropMult = (double) Math.round(cropMult * 10 + 2) / 10;
             return true;
-        }
-        else {
+        } else {
             System.out.println("You have already maxed this rancher.");
             return false;
         }
