@@ -94,6 +94,10 @@ public class Farm {
         return acres;
     }
 
+    public int getPastures() {
+        return pastures;
+    }
+
     /**
      *This returns the string representation of the farm.
      * @return String
