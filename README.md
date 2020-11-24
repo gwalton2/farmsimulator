@@ -28,7 +28,7 @@ The game is over if your farm reaches $0(you lose) or $10,000(you win).
 3) The simulation should run on cycles. A cycle is considered to be of 2 parts - 1 daytime and 1 night time.
 4) Passive currency is earned with each new day (not night). This passive currency income is generated from selling crops and animal products.
 5) More currency can be made from farmer, animal, or crop affinities.
-6) Farms can be upgraded once the farm has acquired enough currency. This means that the farm is expanded to grant it more land, which allows it to holda greater numbers of animals and crops.
+6) Farms can be upgraded once the farm has acquired enough currency. This means that the farm is expanded to grant it more land, which allows it to hold a greater numbers of animals and crops.
 7) Farmers can have affinities for things such as growing crops and rearing animals.
 8) Animals reside on farms, cows and sheep. The number depends on the level of the farm(number of pastures).
 9) During night cycles predators come out.
