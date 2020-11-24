@@ -1,4 +1,4 @@
-#SER316 FarmSimulator
+# SER316 FarmSimulator
 This system simulates a farm collective with various farmers, animals, and means of making money.
 It implements the extra credit of having the design patterns work together to create a cohesive system that implements 9 requirements.
 
@@ -17,12 +17,12 @@ During the night there is a 10% chance a wolf will eat one of your animals(remov
 Each cycle(one day and one night) your farm costs you money(salaries and upkeep) and generates you money from passively selling crops and animals products.
 The game is over if your farm reaches $0(you lose) or $10,000(you win).
 
-##Design Patterns
+## Design Patterns
 Decorator - used to upgrade the farmers and increase their affinities for animals or crops
 Builder - used to create the farm object
 Facade - used to provide a simplified interface between the farm system and Main.
 
-##Requirements
+## Requirements
 1) A new world must start with at least 1 farm.
 2) Farms can be of different types, such as an animal farm or a crop farm.
 3) The simulation should run on cycles. A cycle is considered to be of 2 parts - 1 daytime and 1 night time.
@@ -33,7 +33,7 @@ Facade - used to provide a simplified interface between the farm system and Main
 8) Animals reside on farms, cows and sheep. The number depends on the level of the farm(number of pastures).
 9) During night cycles predators come out.
 
-##Recognized Commands
+## Recognized Commands
 - buy sheep
 - buy cow
 - sell animal
