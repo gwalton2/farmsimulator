@@ -112,10 +112,14 @@ public class Facade {
         Farmer farmer = farm.getFarmers().get(index);
         int price = farmer.getLevel() * 50;
         if (farm.getMoney() >= price) {
-            farmer.levelUp();
-            farm.updateMoney(price * -1);
-            System.out.println("Leveled up this farmer for $" + price);
-            return true;
+            if (farmer.levelUp()) {
+                farm.updateMoney(price * -1);
+                System.out.println("Leveled up this farmer for $" + price);
+                return true;
+            }
+            else {
+                return false;
+            }
         }
         else {
             System.out.println("You do not have enough money to level up this farmer. It costs $" + price);
@@ -137,8 +141,13 @@ public class Facade {
             if (farmer instanceof CropGrower) {
                 upgradedFarmer = new CornChild(farmer);
             }
-            else {
+            else if (farmer instanceof AnimalRearer) {
                 upgradedFarmer = new CritterWhisperer(farmer);
+            }
+            else {
+                System.out.println("Cannot upgrade a rancher.");
+                System.out.println("Try again");
+                return false;
             }
             farm.removeFarmer(index);
             farm.addFarmer(upgradedFarmer);

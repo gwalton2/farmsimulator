@@ -13,15 +13,17 @@ public class Farmer {
         this.cropMult = cropMult;
     }
 
-    public void levelUp() {
+    public boolean levelUp() {
         if (level < 10) {
             level++;
             salary += 5;
-            animalMult += 0.1;
-            cropMult += 0.1;
+            animalMult = (double) Math.round(animalMult * 10 + 1) / 10;
+            cropMult = (double) Math.round(cropMult * 10 + 1) / 10;;
+            return true;
         }
         else {
             System.out.println("You have already maxed this farmer.");
+            return false;
         }
     }
 

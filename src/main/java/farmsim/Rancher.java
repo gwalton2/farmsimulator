@@ -8,10 +8,18 @@ public class Rancher extends Farmer {
         this.farmer = farmer;
     }
 
-    public void levelUp() {
-        level++;
-        animalMult += 0.2;
-        cropMult += 0.2;
+    public boolean levelUp() {
+        if (level < 10) {
+            level++;
+            salary += 10;
+            animalMult = (double) Math.round(animalMult * 10 + 2) / 10;
+            cropMult = (double) Math.round(cropMult * 10 + 2) / 10;
+            return true;
+        }
+        else {
+            System.out.println("You have already maxed this rancher.");
+            return false;
+        }
     }
 
     public int getLevel() {
@@ -23,10 +31,10 @@ public class Rancher extends Farmer {
     }
 
     public double getAnimalMult() {
-        return animalMult + farmer.getAnimalMult();
+        return (double) Math.round(animalMult * 10 + farmer.getAnimalMult() * 10) / 10;
     }
 
     public double getCropMult() {
-        return cropMult + farmer.getCropMult();
+        return (double) Math.round(cropMult * 10 + farmer.getCropMult() * 10) / 10;
     }
 }
