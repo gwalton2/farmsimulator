@@ -1,4 +1,4 @@
-# SER316 FarmSimulator
+# FarmSimulator Homework
 This system simulates a farm collective with various farmers, animals, and means of making money.
 It implements the extra credit of having the design patterns work together to create a cohesive system that implements 9 requirements.
 
